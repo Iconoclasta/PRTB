@@ -2,7 +2,7 @@
 
 This is the official repository for /u/pivxtipbot!
 
-[![Build Status](hhttps://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)
+[![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)
 
 
 # Run it yourself
