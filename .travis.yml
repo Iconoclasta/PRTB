@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - "stable"
+services: mongodb
+notifications:
+  email:
+    recipients:
+      - pivxtipbot@cameralucida.co
+    on_success: never
+    on_failure: always
