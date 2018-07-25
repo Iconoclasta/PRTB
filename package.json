@@ -1,0 +1,38 @@
+{
+  "name": "PIVXRedditTipBot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd src && node index",
+    "test": "mocha ./src/test --no-timeouts --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CameraLucida/PIVXRedditTipBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CameraLucida/PIVXRedditTipBot/issues"
+  },
+  "homepage": "https://github.com/CameraLucida/PIVXRedditTipBot#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "cross-env": "^5.1.5",
+    "eslint": "^4.19.1",
+    "eslint-plugin-mocha": "^5.0.0",
+    "mocha": "^5.1.1"
+  },
+  "dependencies": {
+    "agenda": "^1.0.3",
+    "bitcoin-core": "^2.0.0",
+    "decimal.js": "^10.0.0",
+    "mongodb": "^3.0.8",
+    "mongoose": "^5.0.18",
+    "snoostream": "^1.0.1",
+    "snoowrap": "^1.15.2"
+  }
+}
