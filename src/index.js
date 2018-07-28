@@ -33,7 +33,8 @@ global.welcomeMessage = async function (username) {
 
 const snooStream = snoostream(client);
 
-const commentStream = snooStream.commentStream('pivxtiptest', {regex: /([!tip])\w+/g, rate: 2000});
+// Please amend below replacing `YOURSUBREDDIT` with your preferred sub, and in case your subreddit has more than one tip bots replace [!tip] with a more specific command, ie !pivxtip
+const commentStream = snooStream.commentStream('YOURSUBREDDIT', {regex: /([!tip])\w+/g, rate: 2000});
 
 commentStream.on('post', (post) => {
     msgHandler(post, client);
