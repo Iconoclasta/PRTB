@@ -65,25 +65,25 @@ describe('Withdraw', function() {
     it('should not allow withdraw more than user balance', async function () {
         let amount = user.balance + 1;
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "insufficient funds" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "You do not have sufficient funds to execute this transaction. Deposit some replying to this message with `!deposit`" });
     });
 
     it('should not allow withdraw more than user balance - string input', async function () {
         let amount = "1.1";
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "insufficient funds" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "You do not have sufficient funds to execute this transaction. Deposit some replying to this message with `!deposit`" });
     });
 
     it('should not allow withdraw negative amount', async function () {
         let amount = -100;
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "zero or negative amounts are not allowed" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "Zero or negative amounts are not allowed" });
     });
 
     it('should not allow withdraw negative amount', async function () {
         let amount = 0;
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "zero or negative amounts are not allowed" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "Zero or negative amounts are not allowed" });
     });
 
 });
@@ -98,7 +98,7 @@ describe('Deposit', function() {
     it('should not allow deposit negative amount', async function () {
         let amount = -100;
 
-        return assert.isRejected(models.User.deposit(user, amount), "negative amounts are not allowed");
+        return assert.isRejected(models.User.deposit(user, amount), "Negative amounts are not allowed");
     });
 
     it('should update balance w/ deposit', async function () {
