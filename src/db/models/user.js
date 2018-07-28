@@ -62,7 +62,7 @@ s.schema.statics.withdraw = async function (user, amount) {
 };
 
 s.schema.statics.validateDepositAmount = function (user, amount) {
-    if (amount <= 0) return Promise.reject({ message: "zero or negative amounts are not allowed!" });
+    if (amount <= 0) return Promise.reject({ message: "Zero or negative amounts are not allowed!" });
 
     return Promise.resolve({});
 };
