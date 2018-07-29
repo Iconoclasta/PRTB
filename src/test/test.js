@@ -98,7 +98,7 @@ describe('Deposit', function() {
     it('should not allow deposit negative amount', async function () {
         let amount = -100;
 
-        return assert.isRejected(models.User.deposit(user, amount), "Negative amounts are not allowed");
+        return assert.isRejected(models.User.deposit(user, amount), "Zero or negative amounts are not allowed");
     });
 
     it('should update balance w/ deposit', async function () {
