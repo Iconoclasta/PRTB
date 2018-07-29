@@ -150,7 +150,7 @@ class PaymentProcessor {
         // Validate if user is present
         let user = await User.findOne({ addr: recipientAddress });
 
-        if (!user) throw new Error(`User with address ${recipientAddress} not found`);
+        if (!user) throw new Error(`No user with address ${recipientAddress} was found`);
 
         if (!job.attrs.userStepCompleted) {
             await User.deposit(user, rawAmount, txid);
@@ -161,7 +161,7 @@ class PaymentProcessor {
             await Transaction.create({ userId: user._id, deposit: Decimal(rawAmount).toFixed(), txid: txid });
             await Job.findByIdAndUpdate(job.attrs._id, { "data.transactionStepCompleted": true });
 
-            await client.composeMessage({ to: user.username, subject: "Deposit Complete", text: `Your deposit of ${rawAmount} PIVX is complete and the funds are available to use.`});
+            await client.composeMessage({ to: user.username, subject: "Deposit Complete", text: `Your deposit of ${rawAmount} PIVX has been credited to your account.`});
         }
 
         return txid;
