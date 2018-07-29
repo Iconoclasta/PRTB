@@ -80,7 +80,7 @@ class PaymentProcessor {
         let job = await Job.findOne({ "data.txid": txID  });
 
         if (!job) {
-            console.log('New transaction! TXID: ' + txID);
+            console.log('New transaction detected! TXID: ' + txID);
 
             job = this.agenda.create('deposit_order', { recipientAddress: recipientAddress, txid: txID, rawAmount: rawAmount});
             return new Promise((res, rej) => {
@@ -135,7 +135,7 @@ class PaymentProcessor {
             await Transaction.create({ userId: userId, withdraw: amount, txid: sendID });
             await Job.findByIdAndUpdate(job.attrs._id, { "data.transactionStepCompleted": true });
 
-            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your  withdraw of ${amount} PIVX is complete. TXID: ${sendID}`});
+            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your withdrawal requrest of ${amount} PIVX has been executed successfully: TXID: ${sendID}`});
         }
 
         return sendID;
