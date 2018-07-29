@@ -25,7 +25,7 @@ const client = new Snoowrap({
 const text = `Hello there! I'm /u/pivxtipbot, the official PIVX Reddit Tip Bot! You have interacted with me for the first time, so here's some information about my functionalities and commands. Should any problem arise please contact my maker /u/Bueris.` +
 `\n\nTo begin using me, take a look at the following commands:` +
 `\n\n    !history - Your history of tips.\n\n    !transactions - Your transactions (deposit/withdraw)\n\n    !balance - Check your account balance.\n\n    !deposit - Get a new one-time deposit address\n\n    !withdraw [amount] [address] - Withdraw funds from your account` +
-`\n\nIf you have existing balance, you can tip others by replying to a post/comment by them using \`!tip [amount]\`. You can get support and further detail over at /r/pivxtipbot . Have fun!`;
+`\n\nIf you have existing balance, you can tip others by replying to a post/comment by them using \`!pivxtip [amount]\`. My code is fully open source! You can review it at https://tip.pivx.events . Have fun!`;
 
 global.welcomeMessage = async function (username) {
     return client.composeMessage({ to: username, subject: "Welcome to PIVX Tip Bot!", text });
