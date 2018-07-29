@@ -28,7 +28,7 @@ module.exports = async (original, comment, amount) => {
         else {
             await User.tip(tipper, receiver, amount).then(() => {
 
-                const tip = new Tip({tipper: tipper._id, tipped: receiver._id, amount});
+                const tip = new Tip({tipper: tipper._id, successfully tipped: receiver._id, amount});
                 tip.save((err) => {
                     if (err) rej(err);
                     res(true);
