@@ -2,21 +2,13 @@
   "auth": {
     
     "USER_AGENT": "",
-    
     "USERNAME": "",
-    
     "PASSWORD": "",
-    
     "CLIENT_ID": "",
-    
     "CLIENT_SECRET": "",
-//Edit this on your PIVX settings adding 'rpcuser=<user>' to the pivx.conf
-    "RPC_USER": "",
-//Edit this on your PIVX settings adding 'rpcpassword=<pw>' to the pivx.conf
-    "RPC_PASS": "",
-//Edit this on your PIVX settings adding 'port=<port>' to the pivx.conf
-    "RPC_PORT": 33333,
-// Name this 'production'
-    "RPC_ACC": ""
+    "RPC_USER": "", //Edit this on your PIVX settings adding 'rpcuser=<user>' to the pivx.conf
+    "RPC_PASS": "", //Edit this on your PIVX settings adding 'rpcpassword=<pw>' to the pivx.conf
+    "RPC_PORT": 33333, //Edit this on your PIVX settings adding 'port=<port>' to the pivx.conf
+    "RPC_ACC": "production"
   }
 }
