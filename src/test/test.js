@@ -95,7 +95,7 @@ describe('Deposit', function() {
         user = await createUser();
     });
 
-    it('Negative amounts are not allowed', async function () {
+    it('should not allow deposit negative amount', async function () {
         let amount = -100;
 
         return assert.isRejected(models.User.deposit(user, amount), "Negative amounts are not allowed");
