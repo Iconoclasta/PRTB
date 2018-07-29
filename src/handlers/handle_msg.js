@@ -5,7 +5,7 @@ const handleErr = require('./error_handler.js');
 
 
 module.exports = async (post, client) => {
-
+// You mmust change the command below to the desired input command specified in index.js
     if (!post.body.startsWith('!tip ')) return;
 
     const {parent_id, body} = post;
