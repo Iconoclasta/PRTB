@@ -1,9 +1,14 @@
 {
   "auth": {
+    
     "USER_AGENT": "",
+    
     "USERNAME": "",
+    
     "PASSWORD": "",
+    
     "CLIENT_ID": "",
+    
     "CLIENT_SECRET": "",
 //Edit this on your PIVX settings adding 'rpcuser=<user>' to the pivx.conf
     "RPC_USER": "",
