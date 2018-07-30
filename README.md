@@ -1,6 +1,6 @@
 # PIVXTipBot
 
-This is the official repository for /u/pivxtipbot!
+This is the official repository for /u/pivxtipbot more info about its use and integration will soon be added.
 
 [![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)
 
