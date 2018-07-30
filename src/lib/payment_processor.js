@@ -50,7 +50,7 @@ class PaymentProcessor {
 
     async getAddress(options) {
         try {
-            await this.generateAddress(options.user);
+            await this.generateAddress(options.user).catch(this.reportException);
             return { success: true };
         } catch (e) {
             this.reportException(e);
@@ -80,7 +80,7 @@ class PaymentProcessor {
         let job = await Job.findOne({ "data.txid": txID  });
 
         if (!job) {
-            console.log('New transaction detected! TXID: ' + txID);
+            console.log('New transaction! TXID: ' + txID);
 
             job = this.agenda.create('deposit_order', { recipientAddress: recipientAddress, txid: txID, rawAmount: rawAmount});
             return new Promise((res, rej) => {
@@ -135,7 +135,7 @@ class PaymentProcessor {
             await Transaction.create({ userId: userId, withdraw: amount, txid: sendID });
             await Job.findByIdAndUpdate(job.attrs._id, { "data.transactionStepCompleted": true });
 
-            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your withdrawal requrest of ${amount} PIVX has been executed successfully: TXID: ${sendID}`});
+            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your  withdraw of ${amount} PIVX has been successfully executed. TXID: ${sendID}`});
         }
 
         return sendID;
@@ -150,7 +150,7 @@ class PaymentProcessor {
         // Validate if user is present
         let user = await User.findOne({ addr: recipientAddress });
 
-        if (!user) throw new Error(`No user with address ${recipientAddress} was found`);
+        if (!user) throw new Error(`User with address ${recipientAddress} not found`);
 
         if (!job.attrs.userStepCompleted) {
             await User.deposit(user, rawAmount, txid);
@@ -161,12 +161,10 @@ class PaymentProcessor {
             await Transaction.create({ userId: user._id, deposit: Decimal(rawAmount).toFixed(), txid: txid });
             await Job.findByIdAndUpdate(job.attrs._id, { "data.transactionStepCompleted": true });
 
-            await client.composeMessage({ to: user.username, subject: "Deposit Complete", text: `Your deposit of ${rawAmount} PIVX has been credited to your account.`});
+            await client.composeMessage({ to: user.username, subject: "Deposit Complete", text: `Your deposit of ${rawAmount} PIVX has been successfully credited.`});
         }
 
         return txid;
     }
 
 }
-
-module.exports = PaymentProcessor;
