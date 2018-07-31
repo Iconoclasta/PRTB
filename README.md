@@ -16,7 +16,7 @@ sudo apt-get update && sudo apt-get upgrade
     c) sudo apt-get install nodejs
     d) sudo apt-get install mongodb
     )
-2. Download and install the PIVX client [official walkthrough(https://pivx.freshdesk.com/support/solutions/articles/30000024630-how-to-use-the-command-line-to-install-or-upgrade-pivx-and-start-staking-on-linux)]:
+2. Download and install the PIVX client [![official walkthrough(https://pivx.freshdesk.com/support/solutions/articles/30000024630-how-to-use-the-command-line-to-install-or-upgrade-pivx-and-start-staking-on-linux)]:
 
 Git clone this repository, then run `npm install`. Make sure you have:
 
