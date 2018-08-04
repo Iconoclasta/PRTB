@@ -12,15 +12,18 @@ The bot interfaces with you via /u/pivxtipbot which will respond to the followin
 
 `!deposit` - this command generates a **one time** deposit address for your account. This address will therefore only be associated with your account for **one** transaction. You must generate a new deposit address every time you wish to reload your account. Every time you generate a new deposit address all previous addresses are invalidated, 
 
-`!withdraw [theamountofpiv] [yourpivxaddress]` - this command withdraws your PIVX to any PIVX address. The minimum amount of PIVX to withdraw is 0.1 PIV.
+`!withdraw [the amount of piv] [your PIVX address]` - this command withdraws your PIVX to any PIVX address. The minimum amount of PIVX to withdraw is 0.1 PIV.
 
 `!balance` - this command displays your account's balance in PIVX.
 
 `!history` - this command lists all the tips you've ever either received or sent.
 
 `!transactions` - this command displays the list of all the deposits and withdrawals of your Reddit TipBot account. 
+
+To transfer funds or "tip" an user within Reddit you must reply `!pivxtip [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see below for list).
  
-When you first engage with the bot whether you receive a tip for the first time, DM it or try to tip someone, you'll be greeted with a one-time DM from /u/pivxtipbot 
+ 
+When you first engage with the bot - whether you receive a tip, send it a private message it or try to tip someone for the first time, you'll be greeted with a one-time DM from /u/pivxtipbot 
 
 
 # Run it yourself
@@ -102,4 +105,6 @@ Git clone this repository, then run `npm install`. Make sure you have:
 Then, run `npm start`.
 
 
-LIST OF SUPPORTED SUBREDDITS (Please contact me if you'd like your subreddit to be listed or removed from my list)
+LIST OF SUPPORTED SUBREDDITS (Please contact me if you'd like your subreddit to be listed or removed from this list):
+/r/pivx
+/
