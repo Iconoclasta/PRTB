@@ -21,6 +21,8 @@ The bot interfaces with you via /u/pivxtipbot which will respond to the followin
 To transfer funds or "tip" an user within Reddit you must reply `!pivxtip [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see below for list).
  
  
+
+ 
 When you first engage with the bot - whether you receive a tip, send it a private message it or try to tip someone for the first time, you'll be greeted with a one-time DM from /u/pivxtipbot 
 
 
@@ -169,3 +171,22 @@ Once you're satisfied with the tests we may start the bot "for production" such 
 To stop the bot type
 
     pm2 stop PRTB
+
+
+## Join us
+Website: www.pivx.org 
+
+
+Discord: https://discordapp.com/invite/jzqVsJd 
+
+Twitter: https://twitter.com/_pivx 
+
+Reddit: https://www.reddit.com/r/pivx/ 
+
+Facebook: https://www.facebook.com/PIVXCrypto/ 
+
+Linkedin: https://www.linkedin.com/company/pivx 
+
+Instagram: https://www.instagram.com/pivxcrypto/ 
+
+Steemit: https://steemit.com/@pivx/
