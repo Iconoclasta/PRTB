@@ -4,10 +4,28 @@ This is the official repository for /u/pivxtipbot. More info about its use and i
 
 [![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)
 
+# How to use it
+
+The PIVX Reddit Tip Bot allows Reddit.com users to perform basic PIVX transactions between fellow redditors.
+
+The bot interfaces with you via /u/pivxtipbot which will respond to the following commands via DM:
+
+`!deposit` - this command generates a **one time** deposit address for your account. This address will therefore only be associated with your account for **one** transaction. You must generate a new deposit address every time you wish to reload your account. Every time you generate a new deposit address all previous addresses are invalidated, 
+
+`!withdraw [theamountofpiv] [yourpivxaddress]` - this command withdraws your PIVX to any PIVX address. The minimum amount of PIVX to withdraw is 0.1 PIV.
+
+`!balance` - this command displays your account's balance in PIVX.
+
+`!history` - this command lists all the tips you've ever either received or sent.
+
+`!transactions` - this command displays the list of all the deposits and withdrawals of your Reddit TipBot account. 
+ 
+When you first engage with the bot whether you receive a tip for the first time, DM it or try to tip someone, you'll be greeted with a one-time DM from /u/pivxtipbot 
+
 
 # Run it yourself
 
-1. Install the required dependencies 9[tutorial](https://nodesource.com/blog/installing-node-js-tutorial-ubuntu/)):
+1. Install the required dependencies ([tutorial](https://nodesource.com/blog/installing-node-js-tutorial-ubuntu/)):
 
 sudo apt-get update && sudo apt-get upgrade
 
