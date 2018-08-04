@@ -12,6 +12,6 @@
     "RPC_ACC": "production"
   },
     "settings": {
-    "subreddits": // ["pivx", "whichever", "other", "sub", "you", "please"]
+    "subreddits": ["pivx", "whichever", "other", "sub", "you", "please"]
   }
 }
