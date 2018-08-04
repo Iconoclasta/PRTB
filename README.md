@@ -1,6 +1,6 @@
 # PIVX Reddit TipBot
 
-[![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)
+[![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)  [![Dependencies](https://david-dm.org/CameraLucida/PIVXRedditTipBot.svg)](https://david-dm.org/CameraLucida/PIVXRedditTipBot)
 
 # How to use it
 
@@ -22,6 +22,63 @@ To transfer funds or "tip" an user within Reddit you must reply `!pivxtip [the a
  
  
 When you first engage with the bot - whether you receive a tip, send it a private message it or try to tip someone for the first time, you'll be greeted with a one-time DM from /u/pivxtipbot 
+
+
+A-Z LIST OF SUPPORTED SUBREDDITS (Please contact me if you'd like your subreddit to be listed or removed from this list):
+```
+/r/Anarcho_Capitalism
+/r/Bitcoin
+/r/BitcoinMarkets
+/r/Conservative
+/r/CryptoMarkets
+/r/DarkNetMarkets
+/r/Economics
+/r/Entrepreneur
+/r/InternetIsBeautiful
+/r/JoeRogan
+/r/Libertarian
+/r/MachineLearning
+/r/Monero
+/r/NeutralPolitics
+/r/Piracy
+/r/ProgrammerHumor
+/r/Ripple
+/r/SandersForPresident
+/r/TheRedpill
+/r/The_Donald
+/r/beermoney
+/r/btc
+/r/buttcoin
+/r/dashpay
+/r/dataisbeautiful
+/r/digitalnomad
+/r/dogecoin
+/r/economy
+/r/engineering
+/r/ethereum
+/r/ethtrader
+/r/finance
+/r/financialindependence
+/r/firstworldanarchists
+/r/geek
+/r/hacking
+/r/investing
+/r/learnprogramming
+/r/litecoin
+/r/personalfinance
+/r/pivx
+/r/podcasts
+/r/politics
+/r/privacy
+/r/programming
+/r/smashbros
+/r/solotravel
+/r/startups
+/r/tech
+/r/technology
+/r/wallstreetbets
+/r/wikileaks
+```
 
 
 # Run it yourself
@@ -86,7 +143,7 @@ Let the wallet sync
 Git clone this repository and extract its content
 
     wget https://github.com/CameraLucida/PIVXRedditTipBot/archive/master.zip
-    unzip master.zip
+    unzip PIVXRedditTipBot-master.zip
 
 You must now customize your config.json file with your custom variables
 
@@ -94,15 +151,21 @@ You must now customize your config.json file with your custom variables
     
 Once the codebase is up to date to your preferences you must install npm
 
+    cd ~/PIVXRedditTipBot-master
+    npm install
+    sudo npm install npm -g
+    sudo npm i pm2 -g
+    
+You may now run your instance for the first time. You will need to maintain the ssh connection to the machine running the bot to keep it running. Use this command to test the bot and visualize all activities of the bot.
 
-Git clone this repository, then run `npm install`. Make sure you have:
+    cd ~/PIVXRedditTipBot-master
+    node index
 
-- A PIVX daemon (latest version) running on port 33333
-- A MongoDB service running on default port
+Once you're satisfied with the tests we may start the bot "for production" such that once the program is set on an independent VPS machine it may run without any ssh user connection.
 
-Then, run `npm start`.
+    cd ~/PIVXRedditTipBot-master
+    pm2 start index.js --name PRTB
+    
+To stop the bot type
 
-
-LIST OF SUPPORTED SUBREDDITS (Please contact me if you'd like your subreddit to be listed or removed from this list):
-/r/pivx
-/
+    pm2 stop PRTB
