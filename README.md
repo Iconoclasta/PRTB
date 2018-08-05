@@ -18,15 +18,17 @@ The bot interfaces with you via /u/pivxtipbot which will respond to the followin
 
 `!transactions` - this command displays the list of all the deposits and withdrawals of your Reddit TipBot account. 
 
-To transfer funds or "tip" an user within Reddit you must reply `!pivxtip [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see below for list).
- 
+To transfer funds or "tip" an user within Reddit you must reply `!pivxtip [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see list below). The minimum tip amount is 0.001 PIVX.
+
+Maintaining the bot and codebase online and free of bugs costs time and money. The bot is designed to mimimize transaction fees but the PIVX network will also sometimes want its share. In order to keep the PIVX Reddit Tipbot service operational, it will regularly scrape all users' balances such to round them down to the nearest 0.001. For example if you receive a transaction of 10.85283 PIVX, your available balance will be of 10.852 PIVX with 0.00083 gone to cover eventual outbound transaction fees and fund further development. This is the ONLY fee the bot will ever charge.
+
  ---
 
  
 When you first engage with the bot - whether you receive a tip, send it a private message it or try to tip someone for the first time, you'll be greeted with a one-time DM from /u/pivxtipbot 
 
 
-A-Z LIST OF SUPPORTED SUBREDDITS (Please contact me if you'd like your subreddit to be listed or removed from this list):
+#### A-Z LIST OF SUPPORTED SUBREDDITS (please get in touch to list or remove a subreddit from this list):
 ```
 /r/Anarcho_Capitalism
 /r/Bitcoin
@@ -176,6 +178,11 @@ To stop the bot type
 ---
 ---
 ---
+
+
+### Coffe Me
+
+PIVX: D6YcukkCyL66objpjZmnrNrwheTv4YdC8f
 
 
 ## Join us
