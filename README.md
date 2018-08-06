@@ -28,7 +28,7 @@ Maintaining the bot and its codebase online and free of bugs costs time and mone
 When you first engage with the bot - whether you receive a tip, send it a private message it or try to tip someone for the first time, you'll be greeted with a one-time DM from /u/pivxtipbot 
 
 
-#### A-Z LIST OF SUPPORTED SUBREDDITS (please get in touch to list or remove a subreddit from this list):
+#### A-Z LIST OF SUPPORTED SUBREDDITS (please get in touch to add or remove a subreddit from this list):
 ```
 /r/Anarcho_Capitalism
 /r/Bitcoin
