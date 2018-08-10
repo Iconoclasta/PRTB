@@ -25,12 +25,12 @@ module.exports = async (post, client) => {
     if (c) {
         //do stuff with comment
         handleTip(post, c, amount).then(async () => {
-            await post.reply(`/u/${await post.author.name} has sucessfully tipped /u/${authorName} ${amount} PIVX!`);
+            await post.reply(`/u/${await post.author.name} has sucessfully tipped /u/${authorName} ${parseFloat(amount).toFixed(3)} PIVX!`);
         }).catch(async (err) => {
             //insufficient funds
             if (err == 1) await post.reply(`Insufficient funds to tip ${authorName} ${amount} PIVX!`);
             else if (err == 2) await post.reply(`You may not tip yourself!`);
-            else if (err == 3) await post.reply(`Too small amount to tip!`);
+            else if (err == 3) await post.reply(`The minimum amount allowed to tip is 0.001 PIVX.`);
             else if (err == 4) await post.reply(`You didn't have an account, so one was created for you!`);
             else await post.reply(err);
             console.log(err);
