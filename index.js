@@ -41,7 +41,7 @@ global.welcomeMessage = async function (username) {
 
 const snooStream = snoostream(client);
 
-const commentStream = snooStream.commentStream('all', {regex: /([!pivxtip])\w+/g, rate: 2000});
+const commentStream = snooStream.commentStream('all', {rate: 2000});
 
 commentStream.on('post', (post) => {
     msgHandler(post, client);
@@ -53,7 +53,7 @@ setupDatabase().then((result) => {
 
     console.log(`PIVX Tip Bot starting up...`);
 
-    fork('./src/worker');
+    if (process.argv[2] !== '--no-daemon') fork('./src/worker');
 });
 
 runPoll(client);
