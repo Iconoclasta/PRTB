@@ -84,7 +84,7 @@ s.schema.statics.validateTipAmount = async function (user, amount) {
 
     if (amount.isNaN()) return Promise.reject({ message: "That amount is not a number." });
     else if (amount.lessThan(0.0001)) return Promise.reject({ message: "The minimum amount allowed to tip is 0.0001 PIVX." });
-    else if (amount.greaterThan(Decimal(user.balance.toString()).mul(1e-8))) return Promise.reject({ message: "You do not have sufficient funds!" });
+    else if (amount.greaterThan(Decimal(user.balance.toString()).mul(1e-8))) return Promise.reject({ message: "You do not have enough funds! Try tipping a smaller amount." });
 
     return Promise.resolve({});
 };
