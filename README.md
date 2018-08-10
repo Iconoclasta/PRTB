@@ -18,14 +18,14 @@ The bot interfaces with you via /u/pivxtipbot which will respond to the followin
 
 `!transactions` - this command displays the list of all the deposits and withdrawals of your Reddit TipBot account. 
 
-To transfer funds or "tip" an user within Reddit you must reply `!pivxtip [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see list below). The minimum tip amount is 0.001 PIVX.
+The bot operates on a 3 decimal place limit.
+
+To transfer funds or "tip" an user within Reddit you must reply `!pivxtip [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see list below). The minimum tip amount is 0.001 PIVX. If you execute a tip with more than 3 decimal places the amount will be rounded down to the closest third decimal. For example if you tip someone 10.593856 the bot will transfer 10.593 from your account to the receiver.
 
 Maintaining the bot and its codebase online and free of bugs costs time and money. The bot is designed to mimimize transaction fees but the PIVX network will also sometimes want its share. In order to keep the PIVX Reddit Tipbot service operational, it will regularly scrape all users' balances such to round them down to the nearest 0.001. For example if you receive a transaction of 10.85283 PIVX, your available balance will be of 10.852 PIVX with 0.00083 gone to cover eventual outbound transaction fees and fund further development. This is the ONLY fee the bot will ever charge.
 
  ---
 
- 
-When you first engage with the bot - whether you receive a tip, send it a private message it or try to tip someone for the first time, you'll be greeted with a one-time DM from /u/pivxtipbot 
 
 
 #### A-Z LIST OF SUPPORTED SUBREDDITS (please get in touch to add or remove a subreddit from this list):

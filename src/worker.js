@@ -39,7 +39,7 @@ const run = () => {
 
             const user = await User.findById(job.attrs.data.userId);
 
-            await client.composeMessage({ to: user.username, subject: "Withdraw Failed", text: `Your  withdraw of ${job.attrs.data.amount} PIVX has failed. Reason: ${job.attrs.failReason}. Try again?`});
+            await client.composeMessage({ to: user.username, subject: "Withdraw Failed", text: `Your  withdraw of ${job.attrs.data.amount} PIVX has failed. Reason: ${job.attrs.failReason}`});
 
             console.log('Job failed with error: %s', err.message);
         });
@@ -66,9 +66,9 @@ const duster = async () => {
     const users = await User.find();
 
     for (let user of users) {
-        const _newBal = User.getBigBalance(user);
-        const newBal = Decimal(_newBal.toFixed(3)).div(1e-8);
-        if (_newBal.toString() != newBal.toString()) {
+        const newBal = parseFloat(user.balance.toString()).toFixed(3);
+        if (newBal.toString() !== user.balance.toString()) {
+            console.log(`Sweeping ${user.username}'s balance from ${user.balance.toString()} to ${newBal} ...`)
             await User.findOneAndUpdate({_id: user._id}, {balance: newBal.toString() });
         }
     }

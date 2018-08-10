@@ -65,25 +65,25 @@ describe('Withdraw', function() {
     it('should not allow withdraw more than user balance', async function () {
         let amount = user.balance + 1;
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "You do not have sufficient funds to execute this transaction. Deposit some replying to this message with `!deposit`" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "insufficient funds" });
     });
 
     it('should not allow withdraw more than user balance - string input', async function () {
         let amount = "1.1";
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "You do not have sufficient funds to execute this transaction. Deposit some replying to this message with `!deposit`" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "insufficient funds" });
     });
 
     it('should not allow withdraw negative amount', async function () {
         let amount = -100;
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "Zero or negative amounts are not allowed" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "zero or negative amount not allowed" });
     });
 
     it('should not allow withdraw negative amount', async function () {
         let amount = 0;
 
-        return assert.isRejected(models.User.withdraw(user, amount), { message: "Zero or negative amounts are not allowed" });
+        return assert.isRejected(models.User.withdraw(user, amount), { message: "zero or negative amount not allowed" });
     });
 
 });
@@ -98,7 +98,7 @@ describe('Deposit', function() {
     it('should not allow deposit negative amount', async function () {
         let amount = -100;
 
-        return assert.isRejected(models.User.deposit(user, amount), "Zero or negative amounts are not allowed");
+        return assert.isRejected(models.User.deposit(user, amount), "negative amount not allowed");
     });
 
     it('should update balance w/ deposit', async function () {
@@ -107,7 +107,7 @@ describe('Deposit', function() {
         await models.User.deposit(user, amount);
 
         user = await models.User.findOne({ username: user.username });
-        assert.equal(user.balance.toString(), newBalance.toString());
+        assert.equal(user.balance.toString(), newBalance.toString() + '.000');
     });
 });
 
@@ -125,7 +125,7 @@ describe('Deposit/Withdraw Race Conditions', function() {
 
         return processParallelTransactions(user, transactions).then(async () => {
             user = await models.User.findOne({ username: user.username });
-            assert.equal(user.balance.toString(), newBalance.toString());
+            assert.equal(user.balance.toString(), newBalance.toString() + '.000');
         });
     });
 });
