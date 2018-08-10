@@ -62,7 +62,7 @@ s.schema.statics.withdraw = async function (user, amount) {
 };
 
 s.schema.statics.validateDepositAmount = function (user, amount) {
-    if (amount <= 0) return Promise.reject({ message: "Zero or negative amounts are not allowed!" });
+    if (amount <= 0) return Promise.reject({ message: "zero or negative amount not allowed" });
 
     return Promise.resolve({});
 };
@@ -71,9 +71,20 @@ s.schema.statics.validateWithdrawAmount = async function (user, amount) {
 
     amount = Decimal(amount);
 
-    if (amount.isNaN()) return Promise.reject({ message: "The amount you input is not a number!" });
-    else if (amount.lessThan(0.1)) return Promise.reject({ message: "You need to withdraw at least 0.1 PIVX" });
-    else if (amount.greaterThan(Decimal(user.balance.toString()).mul(1e-8))) return Promise.reject({ message: "You have insufficient funds to withdraw this amount" });
+    if (amount.isNaN()) return Promise.reject({ message: "amount is not a number" });
+    else if (amount.lessThan(0.1)) return Promise.reject({ message: "Requires at least 0.1 pivx" });
+    else if (amount.greaterThan(Decimal(user.balance.toString()).mul(1e-8))) return Promise.reject({ message: "insufficient funds" });
+
+    return Promise.resolve({});
+};
+
+s.schema.statics.validateTipAmount = async function (user, amount) {
+
+    amount = Decimal(amount);
+
+    if (amount.isNaN()) return Promise.reject({ message: "That amount is not a number." });
+    else if (amount.lessThan(0.0001)) return Promise.reject({ message: "The minimum amount allowed to tip is 0.0001 PIVX." });
+    else if (amount.greaterThan(Decimal(user.balance.toString()).mul(1e-8))) return Promise.reject({ message: "You do not have sufficient funds!" });
 
     return Promise.resolve({});
 };
