@@ -59,22 +59,6 @@ const run = () => {
     });
 };
 
-const duster = async () => {
-
-    console.log('Sweeping dust...');
-
-    const users = await User.find();
-
-    for (let user of users) {
-        const newBal = parseFloat(user.balance.toString()).toFixed(3);
-        if (newBal.toString() !== user.balance.toString()) {
-            console.log(`Sweeping ${user.username}'s balance from ${user.balance.toString()} to ${newBal} ...`)
-            await User.findOneAndUpdate({_id: user._id}, {balance: newBal.toString() });
-        }
-    }
-
-};
-
 const startDelay = 2000; // ensure that server.js is up/running
 
 console.log("Starting worker..");
@@ -83,9 +67,3 @@ setTimeout(() => {
     run();
     console.log('started');
 }, startDelay);
-
-setInterval(() => {
-    duster();
-}, 300000);
-
-duster();
