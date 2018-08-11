@@ -80,7 +80,7 @@ async function withdraw(msg, args) {
         job.save((err) => {
             if (err) return false;
 
-            return msg.reply('Withdrawing your coins now... Check !transactions to confirm your tx.');
+            return msg.reply('Withdrawing your coins. Check !transactions to confirm your tx.');
         });
     }).catch(({message}) => {
         //TODO handle
@@ -94,7 +94,7 @@ async function balance(msg) {
 
     if (!user) user = await createNewUser(await msg.author.name);
 
-    return msg.reply('Your balance is ' + User.getBigBalance(user) + " PIVX");
+    return msg.reply('Your balance is ' + user.balance.toString() + " PIVX");
 
 }
 
@@ -145,8 +145,8 @@ async function getTransactions (msg) {
         const deposits = { txs: [] }; const withdraws = { pending: [], txs: [] };
 
         for (let tx of tx_raw) {
-            if (parseFloat(tx.deposit) > 0) deposits.txs.push(tx);
-            else if (parseFloat(tx.withdraw) > 0) withdraws.txs.push(tx);
+            if (Decimal(tx.deposit).moreThan(0)) deposits.txs.push(tx);
+            else if (Decimal(tx.withdraw).moreThan(0)) withdraws.txs.push(tx);
         }
 
         for (let tx of withdraws_pend) {
