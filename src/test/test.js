@@ -28,6 +28,11 @@ const createUser = async () => {
     return r;
 };
 
+global.toFixed = function (num, fixed) {
+    var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+    return num.toString().match(re)[0];
+};
+
 const processParallelTransactions = (user, transactions) => {
     const promises = transactions.map((amount) => {
         if (amount < 0) {
@@ -108,7 +113,7 @@ describe('Deposit', function() {
         await models.User.deposit(user, amount);
 
         user = await models.User.findOne({ username: user.username });
-        assert.equal(user.balance.toString(), newBalance.toFixed(3));
+        assert.equal(user.balance.toString(), toFixed(newBalance, 3));
     });
 });
 
@@ -126,7 +131,7 @@ describe('Deposit/Withdraw Race Conditions', function() {
 
         return processParallelTransactions(user, transactions).then(async () => {
             user = await models.User.findOne({ username: user.username });
-            assert.equal(user.balance.toString(), newBalance.toFixed(3));
+            assert.equal(user.balance.toString(), toFixed(newBalance, 3));
         });
     });
 });
