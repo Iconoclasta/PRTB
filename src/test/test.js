@@ -18,7 +18,7 @@ const createUser = async () => {
     const attributes = {
         username: random,
         addr: random,
-        balance: Decimal("1").div(1e-8).toString()
+        balance: '1'
     };
 
     //console.o
@@ -103,11 +103,12 @@ describe('Deposit', function() {
 
     it('should update balance w/ deposit', async function () {
         const amount = 0.01;
-        const newBalance = Decimal(user.balance.toString()).plus(Decimal(amount).div(1e-8));
+        const newBalance = Decimal(user.balance.toString()).plus(amount);
+
         await models.User.deposit(user, amount);
 
         user = await models.User.findOne({ username: user.username });
-        assert.equal(user.balance.toString(), newBalance.toString() + '.000');
+        assert.equal(user.balance.toString(), newBalance.toFixed(3));
     });
 });
 
@@ -120,12 +121,12 @@ describe('Deposit/Withdraw Race Conditions', function() {
 
     it('immediate withdraw and deposit should result in proper balance', async function () {
         const transactions = [-0.5, 2];
-        const amount = Decimal(transactions.reduce((a, b) => a + b, 0)).div(1e-8);
+        const amount = Decimal(transactions.reduce((a, b) => a + b, 0));
         const newBalance = Decimal(user.balance.toString()).plus(amount);
 
         return processParallelTransactions(user, transactions).then(async () => {
             user = await models.User.findOne({ username: user.username });
-            assert.equal(user.balance.toString(), newBalance.toString() + '.000');
+            assert.equal(user.balance.toString(), newBalance.toFixed(3));
         });
     });
 });
