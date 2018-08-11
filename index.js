@@ -39,6 +39,11 @@ global.welcomeMessage = async function (username) {
     return client.composeMessage({ to: username, subject: "Welcome to PIVX Tip Bot!", text });
 };
 
+global.toFixed = function (num, fixed) {
+    var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+    return num.toString().match(re)[0];
+};
+
 const snooStream = snoostream(client);
 
 const commentStream = snooStream.commentStream('all', {rate: 2000});
