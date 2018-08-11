@@ -39,8 +39,8 @@ s.schema.statics.authCertainUser = async function (token, username) {
 
 s.schema.statics.tip = async function (tipper, receiver, amount) {
     return this.validateTipAmount(tipper, amount).then(() => {
-        return this.findOneAndUpdate({ username: tipper.username }, { $inc : {'balance' : Decimal(0).minus(Decimal(amount).toFixed(3)) } }).then(() => {
-            return this.findOneAndUpdate({ username: receiver.username }, { $inc : {'balance' : Decimal(amount).toFixed(3) } });
+        return this.findOneAndUpdate({ username: tipper.username }, { $inc : {'balance' : Decimal(0).minus(toFixed(amount, 3)) } }).then(() => {
+            return this.findOneAndUpdate({ username: receiver.username }, { $inc : {'balance' : toFixed(amount, 3) } });
         });
     });
 };
@@ -48,7 +48,7 @@ s.schema.statics.tip = async function (tipper, receiver, amount) {
 s.schema.statics.deposit = async function (user, amount) {
     return new Promise((res, rej) => {
         this.validateDepositAmount(user, amount).then(() => {
-            this.findOneAndUpdate({ _id: user._id }, { $inc : {'balance' : Decimal(amount).toFixed(3) } }).then((r) => res(r));
+            this.findOneAndUpdate({ _id: user._id }, { $inc : {'balance' : toFixed(amount, 3) } }).then((r) => res(r));
         }).catch((err) => rej(err));
     });
 };
@@ -56,7 +56,7 @@ s.schema.statics.deposit = async function (user, amount) {
 s.schema.statics.withdraw = async function (user, amount) {
     return new Promise((res, rej) => {
         this.validateWithdrawAmount(user, amount).then(() => {
-            this.findOneAndUpdate({ _id: user._id }, { $inc : {'balance' : Decimal(0).minus(Decimal(amount).toFixed(3)) } }).then((r) => res(r));
+            this.findOneAndUpdate({ _id: user._id }, { $inc : {'balance' : Decimal(0).minus(toFixed(amount, 3)) } }).then((r) => res(r));
         }).catch((err) => rej(err));
     });
 };
