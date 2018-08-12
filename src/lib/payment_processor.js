@@ -135,7 +135,7 @@ class PaymentProcessor {
             await Transaction.create({ userId: userId, withdraw: amount, txid: sendID });
             await Job.findByIdAndUpdate(job.attrs._id, { "data.transactionStepCompleted": true });
 
-            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your  withdraw of ${Decimal(amount).toFixed(3)} PIVX is complete. TXID: ${sendID}`});
+            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your  withdraw of ${toFixed(Decimal(amount).toString(),3)} PIVX is complete. TXID: ${sendID}`});
         }
 
         return sendID;
@@ -158,10 +158,10 @@ class PaymentProcessor {
         }
 
         if (!job.attrs.transactionStepCompleted) {
-            await Transaction.create({ userId: user._id, deposit: Decimal(rawAmount).toFixed(3), txid: txid });
+            await Transaction.create({ userId: user._id, deposit: toFixed(rawAmount, 3), txid: txid });
             await Job.findByIdAndUpdate(job.attrs._id, { "data.transactionStepCompleted": true });
 
-            await client.composeMessage({ to: user.username, subject: "Deposit Complete", text: `Your deposit of ${Decimal(rawAmount).toFixed(3)} PIVX is complete and the funds are available to use.`});
+            await client.composeMessage({ to: user.username, subject: "Deposit Complete", text: `Your deposit of ${toFixed(rawAmount, 3)} PIVX is complete and the funds are available to use.`});
         }
 
         return txid;

@@ -179,6 +179,10 @@ To stop the bot type
 ---
 ---
 
+A special thanks to [DaJuukes](http://dajuukes.codes/) for his continued support and great contribution toward crafting the official PIVX Reddit Tip Bot
+
+
+
 
 ### Coffe Me
 
