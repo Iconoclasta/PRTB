@@ -1,3 +1,10 @@
+Note from wallet developers:
+
+Remember that this is still a beta, and many major changes were made in the recent days. If you notice the bot not responding, this seems to be on the fault of Reddit API or the library used by the bot. I'm investigating into this. Private messages to the bot work fine, so you can deposit/withdraw/check balance and history all you want.
+
+If you have any bugs or want to suggest changes, send me a private message!
+
+
 # PIVX Reddit TipBot
 
 [![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)  [![Dependencies](https://david-dm.org/CameraLucida/PIVXRedditTipBot.svg)](https://david-dm.org/CameraLucida/PIVXRedditTipBot)
