@@ -1,20 +1,17 @@
 global.srcRoot = require('path').resolve('./');
 const {Transaction, User, Job} = require('../db');
 
-const config = require('../data/config.json');
-
 const Snoowrap = require('snoowrap');
 
 const client = new Snoowrap({
-    userAgent   : config.auth.USER_AGENT,
-    clientId    : config.auth.CLIENT_ID,
-    clientSecret: config.auth.CLIENT_SECRET,
-    username    : config.auth.USERNAME,
-    password    : config.auth.PASSWORD
+    userAgent   : process.env.USER_AGENT,
+    clientId    : process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    username    : process.env.USERNAME,
+    password    : process.env.PASSWORD
 });
 
 const PIVXClient = require('./pivx_client.js');
-const Decimal = require("decimal.js");
 
 class PaymentProcessor {
 
@@ -63,7 +60,7 @@ class PaymentProcessor {
             this.pivxClient.listTransactions().then(async txs => {
                 if (txs) {
                     for (let tx of txs) {
-                        if (tx.account == config.auth.RPC_ACC && tx.txid) {
+                        if (tx.account == process.env.RPC_ACC && tx.txid) {
                             const result = await Transaction.findOne({ txid: tx.txid });
                             if (!result) await this.createDepositOrder(tx.txid, tx.address, tx.amount);
                         }
@@ -135,7 +132,7 @@ class PaymentProcessor {
             await Transaction.create({ userId: userId, withdraw: amount, txid: sendID });
             await Job.findByIdAndUpdate(job.attrs._id, { "data.transactionStepCompleted": true });
 
-            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your  withdraw of ${toFixed(Decimal(amount).toString(),3)} PIVX is complete. TXID: ${sendID}`});
+            await client.composeMessage({ to: user.username, subject: "Withdraw Complete", text: `Your  withdraw of ${toFixed(amount,3)} PIVX is complete. TXID: ${sendID}`});
         }
 
         return sendID;

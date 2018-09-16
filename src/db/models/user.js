@@ -21,21 +21,6 @@ let s = {
     })
 };
 
-s.schema.statics.authUser = async function(token) {
-    return new Promise(async (res) => {
-        let user = await this.findOne({token: token});
-        if (user != null) res(user);
-        else res(false);
-    });
-};
-
-s.schema.statics.authCertainUser = async function (token, username) {
-    return new Promise(async (res) => {
-        let user = await this.findOne({token: token});
-        if (user != null && user.username == username) res(user);
-        else res(false);
-    });
-};
 
 s.schema.statics.tip = async function (tipper, receiver, amount) {
     return this.validateTipAmount(tipper, amount).then(() => {
