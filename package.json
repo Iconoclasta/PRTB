@@ -1,5 +1,5 @@
 {
-  "name": "PIVXTipBot",
+  "name": "PIVXRedditTipBot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DaJuukes/PIVXTipBot.git"
+    "url": "git+https://github.com/CameraLucida/PIVXRedditTipBot.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DaJuukes/PIVXTipBot/issues"
+    "url": "https://github.com/CameraLucida/PIVXRedditTipBot/issues"
   },
-  "homepage": "https://github.com/DaJuukes/PIVXTipBot#readme",
+  "homepage": "https://github.com/CameraLucida/PIVXRedditTipBot#readme",
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
