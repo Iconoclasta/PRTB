@@ -1,5 +1,4 @@
 const PaymentProcessor = require('../lib/payment_processor.js');
-//const config = require('../config.json')[global.env];
 
 module.exports = function(agenda, snoowrap) {
 
