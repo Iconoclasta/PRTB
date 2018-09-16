@@ -1,26 +1,31 @@
 const PrivateMessage = require('snoowrap').objects.PrivateMessage;
+const Comment = require('snoowrap').objects.Comment;
 const {User, Job, Tip, Transaction} = require('../db');
 const PivxClient = require('../lib/pivx_client');
 const PIVXClient = new PivxClient();
 const Decimal = require('decimal.js');
+const handleMessage = require('./handle_msg.js');
 
-async function filterMessages(arr) {
-    const newArr = [];
-    for (let msg of arr) {
-        if (msg instanceof PrivateMessage) newArr.push(msg);
+async function filterMessages(msgs,  client) {
+    let arr = [];
+    for (let msg of msgs) {
+        console.log('Reading message ' + msg.id);
+        arr.push(msg);
+        if (msg instanceof PrivateMessage) await handlePrivateMessage(msg, client);
+        else if (msg instanceof Comment) await handleMessage(msg, client);
     }
-    return newArr;
+    if (arr.length > 0) {
+        console.log('Clearing ' + arr.length + ' messages.');
+        return client.markMessagesAsRead(arr);
+    }
+    else return Promise.resolve();
 }
 
 async function handlePoll(client) {
-    const _msgs = await client.getUnreadMessages();
-
-    const msgs = await filterMessages(_msgs, client);
+    const msgs = await client.getUnreadMessages({ filter: 'mentions' });
 
 
-    for (let msg of msgs) {
-        await handlePrivateMessage(msg);
-    }
+    return filterMessages(msgs, client);
 }
 
 async function createNewUser(username) {
@@ -193,7 +198,7 @@ async function help(msg) {
     return msg.reply(text);
 }
 
-async function handlePrivateMessage(msg) {
+async function handlePrivateMessage(msg, client) {
 
     const args = msg.body.match(/\S+/g);
 
@@ -223,6 +228,9 @@ async function handlePrivateMessage(msg) {
     case '!help':
         await help(msg);
         break;
+    case '/u/pivxtipbot':
+        await handleMessage(msg, client);
+        break;
     default:
         //handleInvalid
         await msg.reply(args[0] + " is an invalid command.");
@@ -233,7 +241,6 @@ async function handlePrivateMessage(msg) {
 }
 
 module.exports = async (client) => {
-
 
     setInterval(await handlePoll, 10000, client);
 
