@@ -1,19 +1,15 @@
 const setupDatabase = require('./db/setup');
 
-const Decimal = require('decimal.js');
-
 const {User} = require('./db');
-
-const config = require('./data/config.json');
 
 const Snoowrap = require('snoowrap');
 
 const client = new Snoowrap({
-    userAgent   : config.auth.USER_AGENT,
-    clientId    : config.auth.CLIENT_ID,
-    clientSecret: config.auth.CLIENT_SECRET,
-    username    : config.auth.USERNAME,
-    password    : config.auth.PASSWORD
+    userAgent   : process.env.USER_AGENT,
+    clientId    : process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    username    : process.env.USERNAME,
+    password    : process.env.PASSWORD
 });
 
 global.env = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
@@ -21,7 +17,7 @@ global.env = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
 console.log("=== Starting WORKER ===");
 
 global.toFixed = function (num, fixed) {
-    var re = new RegExp('^-?\\d+(?:\.\\d{0,' + (fixed || -1) + '})?');
+    var re = new RegExp('^-?\\d+(?:.\\d{0,' + (fixed || -1) + '})?');
     return num.toString().match(re)[0];
 };
 
@@ -42,6 +38,8 @@ const run = () => {
             job.save();
 
             const user = await User.findById(job.attrs.data.userId);
+
+            if (!user) return
 
             await client.composeMessage({ to: user.username, subject: "Withdraw Failed", text: `Your  withdraw of ${job.attrs.data.amount} PIVX has failed. Reason: ${job.attrs.failReason}`});
 
