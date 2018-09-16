@@ -2,34 +2,28 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 const Bitcoin = require('bitcoin-core');
 
-const config = require('../data/config.json');
-
 class PivxClient {
-
-    constructor() {
+    constructor () {
         this.rpc = new Bitcoin({
-            port: config.auth.RPC_PORT,
-            username: config.auth.RPC_USER,
-            password: config.auth.RPC_PASS
+            port: process.env.RPC_PORT,
+            username: process.env.RPC_USER,
+            password: process.env.RPC_PASS
         });
 
         this.SATOSHI_VALUE = 1e-8;
-
     }
 
-    async accountCreate() {
-        return this.rpc.getNewAddress(config.auth.RPC_ACC);
+    async accountCreate () {
+        return this.rpc.getNewAddress(process.env.RPC_ACC);
     }
 
-    async send(addr, amount) {
+    async send (addr, amount) {
         return this.rpc.sendToAddress(addr, amount);
     }
 
-    async listTransactions() {
+    async listTransactions () {
         return this.rpc.listUnspent();
     }
-
 }
-
 
 module.exports = PivxClient;
