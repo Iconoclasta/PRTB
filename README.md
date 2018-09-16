@@ -98,7 +98,7 @@ Maintaining the bot and its codebase online and free of bugs costs time and mone
 
 sudo apt-get update && sudo apt-get upgrade
 
-    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
     sudo apt-get install -y nodejs
     
 Check the nodejs version:
