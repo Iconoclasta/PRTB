@@ -2,7 +2,7 @@ Note from wallet developers:
 
 Remember that this is still a beta, and many major changes were made in the recent days. If you notice the bot not responding, this seems to be on the fault of Reddit API or the library used by the bot. I'm investigating into this. Private messages to the bot work fine, so you can deposit/withdraw/check balance and history all you want.
 
-If you have any bugs or want to suggest changes, send me a private message!
+If you find any bugs or want to suggest changes, send me a private message!
 
 
 # PIVX Reddit TipBot
@@ -27,70 +27,15 @@ The bot interfaces with you via /u/pivxtipbot which will respond to the followin
 
 The bot operates on a 3 decimal place limit.
 
-To transfer funds or "tip" an user within Reddit you must reply `/u/pivxtipbot [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see list below). The minimum tip amount is 0.001 PIVX. If you execute a tip with more than 3 decimal places the amount will be rounded down to the closest third decimal. For example if you tip someone 10.593856 the bot will transfer 10.593 from your account to the receiver.
+To transfer funds or "tip" an user within Reddit you must reply `/u/pivxtipbot tip [the amount of piv]` to a thread or comment of the desired recipient within a supported Sub-Reddit (see list below). The minimum tip amount is 0.001 PIVX. If you execute a tip with more than 3 decimal places the amount will be rounded down to the closest third decimal. For example if you tip someone 10.593856 the bot will transfer 10.593 from your account to the receiver.
 
 Maintaining the bot and its codebase online and free of bugs costs time and money. The bot is designed to mimimize transaction fees but the PIVX network will also sometimes want its share. In order to keep the PIVX Reddit Tipbot service operational, it will regularly scrape all users' balances such to round them down to the nearest 0.001. For example if you receive a transaction of 10.85283 PIVX, your available balance will be of 10.852 PIVX with 0.00083 gone to cover eventual outbound transaction fees and fund further development. This is the ONLY fee the bot will ever charge.
 
  ---
 
+This bot operates across the whole of reddit. You may tip users in any subreddit in accordance to that sub's rules.
 
-
-#### A-Z LIST OF SUPPORTED SUBREDDITS (please get in touch to add or remove a subreddit from this list):
-```
-/r/Anarcho_Capitalism
-/r/Bitcoin
-/r/BitcoinMarkets
-/r/Conservative
-/r/CryptoMarkets
-/r/DarkNetMarkets
-/r/Economics
-/r/Entrepreneur
-/r/InternetIsBeautiful
-/r/JoeRogan
-/r/Libertarian
-/r/MachineLearning
-/r/Monero
-/r/NeutralPolitics
-/r/Piracy
-/r/ProgrammerHumor
-/r/Ripple
-/r/SandersForPresident
-/r/TheRedpill
-/r/The_Donald
-/r/beermoney
-/r/btc
-/r/buttcoin
-/r/dashpay
-/r/dataisbeautiful
-/r/digitalnomad
-/r/dogecoin
-/r/economy
-/r/engineering
-/r/ethereum
-/r/ethtrader
-/r/finance
-/r/financialindependence
-/r/firstworldanarchists
-/r/geek
-/r/hacking
-/r/investing
-/r/learnprogramming
-/r/litecoin
-/r/personalfinance
-/r/pivx
-/r/podcasts
-/r/politics
-/r/privacy
-/r/programming
-/r/smashbros
-/r/solotravel
-/r/startups
-/r/tech
-/r/technology
-/r/wallstreetbets
-/r/wikileaks
-```
-
+ ----
 
 # Run it yourself
 
@@ -99,7 +44,7 @@ Maintaining the bot and its codebase online and free of bugs costs time and mone
 sudo apt-get update && sudo apt-get upgrade
 
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
-    sudo apt-get install -y nodejs
+    nvm install 10.10.0
     
 Check the nodejs version:
     
@@ -107,7 +52,7 @@ Check the nodejs version:
     
 Install NPM globally
 
-    sudo npm install npm --global
+    npm install npm --global
 
 Prepare your machine for the bot
 
@@ -164,8 +109,8 @@ Once the codebase is up to date to your preferences you must install npm
 
     cd ~/PIVXRedditTipBot-master
     npm install
-    sudo npm install npm -g
-    sudo npm i pm2 -g
+    npm install npm -g
+    npm i pm2 -g
     
 You may now run your instance for the first time. You will need to maintain the ssh connection to the machine running the bot to keep it running. Use this command to test the bot and visualize all activities of the bot.
 
