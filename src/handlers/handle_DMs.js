@@ -141,7 +141,7 @@ async function history(msg) {
 
 async function getTransactions (msg) {
     return new Promise(async (res) => {
-        const user = await User.findOne({username: await msg.author.name }) || await await createNewUser(await msg.author.name);
+        const user = await User.findOne({username: await msg.author.name }) || await createNewUser(await msg.author.name);
 
         const withdraws_pend = await Job.find({ userId: user._id, completed: { "$exists": false }}).limit(100).sort({ lastFinishedAt: 'desc' });
 
@@ -150,8 +150,10 @@ async function getTransactions (msg) {
         const deposits = { txs: [] }; const withdraws = { pending: [], txs: [] };
 
         for (let tx of tx_raw) {
-            if (Decimal(tx.deposit).moreThan(0)) deposits.txs.push(tx);
-            else if (Decimal(tx.withdraw).moreThan(0)) withdraws.txs.push(tx);
+            if (tx.deposit !== '0.0') {
+                if (Decimal(tx.deposit).moreThan(0)) deposits.txs.push(tx);
+                else if (Decimal(tx.withdraw).moreThan(0)) withdraws.txs.push(tx);
+            }
         }
 
         for (let tx of withdraws_pend) {
