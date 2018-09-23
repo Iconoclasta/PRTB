@@ -174,7 +174,6 @@ async function transactions(msg) {
     let tx_msg = "\n**Completed transactions**:\n";
 
     for (let txd of deposits.txs) {
-
         tx_msg += `\nDeposit Amount: ${txd.deposit} PIVX | TXID: ${txd.txid}\n`;
     }
 
