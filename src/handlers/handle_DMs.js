@@ -150,10 +150,9 @@ async function getTransactions (msg) {
         const deposits = { txs: [] }; const withdraws = { pending: [], txs: [] };
 
         for (let tx of tx_raw) {
-            if (tx.deposit !== '0.0') {
-                if (Decimal(tx.deposit).moreThan(0)) deposits.txs.push(tx);
-                else if (Decimal(tx.withdraw).moreThan(0)) withdraws.txs.push(tx);
-            }
+            console.log(tx.deposit, tx.withdraw);
+            if (tx.deposit.toString() !== '0.0') deposits.txs.push(tx);
+            else if (tx.withdraw.toString() !== '0.0') withdraws.txs.push(tx);
         }
 
         for (let tx of withdraws_pend) {
