@@ -111,7 +111,7 @@ class PaymentProcessor {
         if (job.attrs.sendStepCompleted) {
             sendID = job.attrs.txid;
         } else {
-            const sent = new Promise(resolve => resolve('test')); // this.pivxClient.send(recipientAddress, amount)
+            const sent = /*new Promise(resolve => resolve('test'));*/ this.pivxClient.send(recipientAddress, amount);
 
             await new Promise((resolve, reject) => {
                 sent.then((txid) => {
