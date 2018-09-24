@@ -1,4 +1,3 @@
-
 const path = require('path');
 const { fork } = require('child_process');
 
@@ -23,11 +22,6 @@ const client = new Snoowrap({
     username    : process.env.USERNAME,
     password    : process.env.PASSWORD
 });
-
-const text = `Hello there! I'm /u/pivxtipbot, the official PIVX Reddit Tip Bot! You have interacted with me for the first time, so here's some information about my functionalities and commands. Should any problem arise please contact my maker /u/Bueris.` +
-`\n\nTo begin using me, take a look at the following commands:` +
-`\n\n    !history - Your history of tips.\n\n    !transactions - Your transactions (deposits/withdrawals)\n\n    !balance - Check your account balance.\n\n    !deposit - Get a new one-time deposit address\n\n    !withdraw [amount] [address] - Withdraw funds from your account` +
-`\n\nIf you have existing balance, you can tip others by replying to a post/comment by them with \`/u/pivxtipbot tip [amount]\`. My code is fully open source! You can review it at http://tip.pivx.events . Have fun!`;
 
 global.welcomeMessage = async function (username) {
     return client.composeMessage({ to: username, subject: "Welcome to PIVX Tip Bot!", text });
@@ -59,19 +53,23 @@ setupDatabase().then((result) => {
 
 async function depositMessage (data) {
 
-    const user = await User.findById(data.userId);
+    const user = await User.findById(data._id);
 
-    if (!user) return;
+    if (!user) {
+        return console.log('ERR: User not found');
+    }
 
     return client.composeMessage({ to: user.username, subject: "Deposit Success", text: `Your deposit of **${data.amount}** PIVX has been credited to your account.`});
 }
 
 async function withdrawMessage (data) {
 
-    const user = await User.findById(data.userId);
+    const user = await User.findById(data._id);
 
-    if (!user) return;
+    if (!user) {
+        return console.log('ERR: User not found');
+    }
 
-    if (!data.error && data.txid) return client.composeMessage({ to: user.username, subject: "Withdraw Success", text: `Your withdraw of **${data.amount}** PIVX has been executed. Your TXID is: ${data.txid}`});
+    if (!data.error && data.txid) return client.composeMessage({ to: user.username, subject: "Withdraw Success", text: `Your withdraw of **${data.amount}** PIVX has been executed successfully. Your TXID is: ${data.txid}`});
     else return client.composeMessage({ to: user.username, subject: "Withdraw Failed", text: `Your withdraw of **${data.amount}** PIVX has encountered an error. The error was: ${data.error}`});
 }
