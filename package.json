@@ -1,6 +1,6 @@
 {
   "name": "PIVXRedditTipBot",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "dotenv": "^6.0.0",
     "mongodb": "^3.0.8",
     "mongoose": "^5.0.18",
+    "sinon": "^6.3.4",
     "snoostream": "^1.0.1",
     "snoowrap": "^1.15.2"
   }
