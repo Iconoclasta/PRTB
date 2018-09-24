@@ -28,7 +28,7 @@ class PaymentProcessor {
         }
     }
 
-    async getAddress (options) {
+    async getAddress () {
         try {
             return this.pivxClient.accountCreate();
         } catch (e) {
@@ -139,7 +139,7 @@ class PaymentProcessor {
 
         // Step 3: Record Transaction
 
-        await new Promise(resolve => { process.send({ id: user.id, amount, address: recipientAddress, txid: sendID }); resolve(); });
+        await new Promise(resolve => { process.send({ id: user._id, amount, address: recipientAddress, txid: sendID }); resolve(); });
 
         return sendID;
     }
@@ -161,11 +161,11 @@ class PaymentProcessor {
         }
 
         if (!job.attrs.transactionStepCompleted) {
-            await Transaction.create({ userId: user._id, deposit: parseInt(amount), txid: txid });
+            await Transaction.create({ userId: user._id, deposit: amount, txid: txid });
             await Job.findByIdAndUpdate(job.attrs._id, { 'data.transactionStepCompleted': true });
         }
 
-        if (process.send) process.send({ id: user.id, amount, deposit: true });
+        await new Promise(resolve => { process.send({ id: user._id, amount, deposit: true }); resolve(); });
 
         return txid;
     }
