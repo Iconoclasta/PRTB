@@ -139,7 +139,7 @@ class PaymentProcessor {
 
         // Step 3: Record Transaction
 
-        await new Promise(resolve => { process.send({ id: user._id, amount, address: recipientAddress, txid: sendID }); resolve(); });
+        await new Promise(resolve => { process.send({ _id: user._id, amount, address: recipientAddress, txid: sendID }); resolve(); });
 
         return sendID;
     }
@@ -165,7 +165,7 @@ class PaymentProcessor {
             await Job.findByIdAndUpdate(job.attrs._id, { 'data.transactionStepCompleted': true });
         }
 
-        await new Promise(resolve => { process.send({ id: user._id, amount, deposit: true }); resolve(); });
+        await new Promise(resolve => { process.send({ _id: user._id, amount, deposit: true }); resolve(); });
 
         return txid;
     }
