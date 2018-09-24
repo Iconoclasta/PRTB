@@ -1,9 +1,5 @@
 const setupDatabase = require('./db/setup');
 
-const {User} = require('./db');
-
-const Snoowrap = require('snoowrap');
-
 global.env = process.env.NODE_ENV ? process.env.NODE_ENV : "development";
 
 console.log("=== Starting WORKER ===");
@@ -18,7 +14,9 @@ const run = () => {
         let agenda = result.agenda;
 
         const paymentProcessor = require('./jobs/payment.js')(agenda);
-        paymentProcessor.checkDeposit({ repeat: true });
+
+        setInterval(async () => { paymentProcessor.checkDeposit(); }, 5000);
+
 
         agenda.on('ready', function() {
             console.log('Agenda ready!');
