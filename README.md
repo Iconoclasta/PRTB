@@ -5,7 +5,7 @@
 # Welcome 
 
 With more than *1.6 Billion* monthly views and the largest crypto-specific communities (or subreddits) in the world, Reddit is one of the most influential forums to make announcements, share ideas and engage with peers in crypto today.
-The PIVX Reddit Tip-Bot aims at empowering this user base by allowing easy access to PIVX, one of the most private and lightweight coins in the cryptoverse. Users will be able to reward authors of content they enjoyed, trade PIVX for goods and services, and monetize their threads and comments in a safe and distributed fashion.
+The PIVX Reddit Tip-Bot aims at empowering this user base by allowing easy access to PIVX, one of the most private and lightweight coins in the cryptoverse. Users will be able to reward authors of content they enjoyed, trade PIVX for goods and services, and monetize their posts and comments in a safe and distributed fashion.
 
 # How to use it
 
