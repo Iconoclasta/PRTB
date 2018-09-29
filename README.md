@@ -1,21 +1,19 @@
-Note from wallet developers:
-
-Remember that this is still a beta, and many major changes were made in the recent days. If you notice the bot not responding, this seems to be on the fault of Reddit API or the library used by the bot. I'm investigating into this. Private messages to the bot work fine, so you can deposit/withdraw/check balance and history all you want.
-
-If you find any bugs or want to suggest changes, send me a private message!
-
-
 # PIVX Reddit TipBot
 
 [![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)  [![Dependencies](https://david-dm.org/CameraLucida/PIVXRedditTipBot.svg)](https://david-dm.org/CameraLucida/PIVXRedditTipBot)
 
+# Welcome 
+
+With more than *1.6 Billion* monthly views and the largest crypto-specific communities (or subreddits) in the world, Reddit is one of the most influential forums to make announcements, share ideas and engage with peers in crypto today.
+The PIVX Reddit Tip-Bot aims at empowering this user base by allowing easy access to PIVX, one of the most private and lightweight coins in the cryptoverse. Users will be able to reward authors of content they enjoyed, trade PIVX for goods and services, and monetize their threads and comments in a safe and distributed fashion.
+
 # How to use it
 
-The PIVX Reddit Tip Bot allows Reddit.com users to perform basic PIVX transactions between fellow redditors.
+The PIVX Reddit Tip Bot allows Reddit.com users to perform basic PIVX transactions between fellow Redditors.
 
-The bot interfaces with you via /u/pivxtipbot which will respond to the following commands via DM:
+The bot interfaces with you via /u/pivxtipbot which will respond to the following commands via Direct Message (DM):
 
-`!deposit` - this command generates a **one time** deposit address for your account. This address will therefore only be associated with your account for **one** transaction. You must generate a new deposit address every time you wish to reload your account. Every time you generate a new deposit address all previous addresses are invalidated, 
+`!deposit` - this command generates a **one-time** deposit address for your account. This address will therefore only be associated with your account for **one** transaction. You must generate a new deposit address every time you wish to reload your account. Every time you generate a new deposit address all previous addresses are invalidated, 
 
 `!withdraw [the amount of piv] [your PIVX address]` - this command withdraws your PIVX to any PIVX address. The minimum amount of PIVX to withdraw is 0.1 PIV.
 
@@ -27,9 +25,9 @@ The bot interfaces with you via /u/pivxtipbot which will respond to the followin
 
 The bot operates on a 3 decimal place limit.
 
-To transfer funds or "tip" an user within Reddit you must reply `/u/pivxtipbot tip [the amount of piv]` to a thread or comment of the desired recipient in any subreddit where bot activity is allowed. The minimum tip amount is 0.001 PIVX. If you execute a tip with more than 3 decimal places the amount will be rounded down to the closest thousandth. For example if you tip someone 10.593856 the bot will transfer 10.593 from your account to the receiver.
+To transfer funds or "tip" an user within Reddit you must reply `/u/pivxtipbot tip [the amount of piv]` to a thread or comment of the desired recipient in any subreddit where bot activity is allowed. The minimum tip amount is 0.001 PIVX. If you execute a tip with more than 3 decimal places the amount will be rounded down to the closest thousandth. For example, if you tip someone 10.593856 the bot will transfer 10.593 from your account to the receiver.
 
-Maintaining the bot and its codebase online and free of bugs costs time and money. The bot is designed to mimimize transaction fees but the PIVX network will also sometimes want its share. In order to keep the PIVX Reddit Tipbot service operational, it will regularly scrape all users' balances such to round them down to the nearest 0.001. For example if you receive a transaction of 10.85283 PIVX, your available balance will be of 10.852 PIVX with 0.00083 gone to cover eventual outbound transaction fees and fund further development. This is the ONLY fee the bot will ever charge.
+Maintaining the bot and its codebase online and free of bugs costs time and money. The bot is designed to minimize transaction fees but the PIVX network will also sometimes want its share. In order to keep the PIVX Reddit Tipbot service operational, it will regularly scrape all users' balances such to round them down to the nearest 0.001. For example if you receive a transaction of 10.85283 PIVX, your available balance will be of 10.852 PIVX with 0.00083 gone to cover eventual outbound transaction fees and fund further development. This is the ONLY fee the bot will ever charge.
 
  ---
 
