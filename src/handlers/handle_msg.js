@@ -27,7 +27,7 @@ module.exports = async (post, client) => {
         //do stuff with comment
         console.log('Handling tip..');
         handleTip(post, comment, amount).then(async () => {
-            await post.reply(`/u/${await post.author.name} has sucessfully tipped /u/${await comment.author.name} ${toFixed(Decimal(amount).toString(), 3)} PIVX!`);
+            await post.reply(`/u/${await post.author.name} has successfully tipped /u/${await comment.author.name} ${toFixed(Decimal(amount).toString(), 3)} PIVX!`);
         }).catch(async (err) => {
             //insufficient funds
             await post.reply(err);
