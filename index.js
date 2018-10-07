@@ -15,11 +15,6 @@ dotenv.config({ path: './src/data/config.env' });
 const setupDatabase = require('./src/db/setup');
 
 const runPoll = require('./src/handlers/handle_DMs.js');
-if (!process.env.USER_AGENT || !process.env.CLIENT_ID || !process.env.CLIENT_SECRET || !process.env.USERNAME || !process.env.PASSWORD) {
-    console.log('Credentials not found.');
-    console.log(process.env.USER_AGENT, process.env.CLIENT_ID, process.env.CLIENT_SECRET.length, process.env.USERNAME, process.env.PASSWORD.length)
-    process.exit(0);
-}
 const client = new Snoowrap({
     userAgent   : process.env.USER_AGENT,
     clientId    : process.env.CLIENT_ID,
