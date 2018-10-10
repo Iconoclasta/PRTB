@@ -5,6 +5,6 @@ services: mongodb
 notifications:
   email:
     recipients:
-      - pivxtipbot@cameralucida.co
+      - 40902868+Iconoclasta@users.noreply.github.com
     on_success: never
     on_failure: always
