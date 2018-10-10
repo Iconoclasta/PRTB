@@ -1,6 +1,6 @@
 # PIVX Reddit TipBot
 
-[![Build Status](https://travis-ci.com/CameraLucida/PIVXRedditTipBot.svg?branch=master)](https://travis-ci.com/CameraLucida/PIVXRedditTipBot)  [![Dependencies](https://david-dm.org/CameraLucida/PIVXRedditTipBot.svg)](https://david-dm.org/CameraLucida/PIVXRedditTipBot)
+[![Build Status](https://travis-ci.com/Iconoclasta/PRTB.svg?branch=master)](https://travis-ci.com/Iconoclasta/PRTB)  [![Dependencies](https://david-dm.org/Iconoclasta/PRTB.svg)](https://david-dm.org/Iconoclasta/PRTB)
 
 # Welcome 
 
