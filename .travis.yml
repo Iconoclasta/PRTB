@@ -5,6 +5,6 @@ services: mongodb
 notifications:
   email:
     recipients:
-      - pivxtipbot@cameralucida.co
+      - tip@pivx.events
     on_success: never
     on_failure: always

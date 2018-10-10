@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CameraLucida/PIVXRedditTipBot.git"
+    "url": "git+https://github.com/Iconoclasta/PRTB.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CameraLucida/PIVXRedditTipBot/issues"
+    "url": "https://github.com/Iconoclasta/PRTB/issues"
   },
-  "homepage": "https://github.com/CameraLucida/PIVXRedditTipBot#readme",
+  "homepage": "https://github.com/Iconoclasta/PRTB#readme",
   "devDependencies": {
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",

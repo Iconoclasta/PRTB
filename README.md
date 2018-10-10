@@ -96,8 +96,8 @@ Let the wallet sync
 
 Git clone this repository and extract its content
 
-    wget https://github.com/CameraLucida/PIVXRedditTipBot/archive/master.zip
-    unzip PIVXRedditTipBot-master.zip
+    wget https://github.com/Iconoclasta/PRTB/archive/master.zip
+    unzip PRTB-master.zip
 
 You must now customize your config.json file with your custom variables
 
@@ -105,19 +105,19 @@ You must now customize your config.json file with your custom variables
     
 Once the codebase is up to date to your preferences you must install npm
 
-    cd ~/PIVXRedditTipBot-master
+    cd ~/PRTB-master
     npm install
     npm install npm -g
     npm i pm2 -g
     
 You may now run your instance for the first time. You will need to maintain the ssh connection to the machine running the bot to keep it running. Use this command to test the bot and visualize all activities of the bot.
 
-    cd ~/PIVXRedditTipBot-master
+    cd ~/PRTB-master
     node index
 
 Once you're satisfied with the tests we may start the bot "for production" such that once the program is set on an independent VPS machine it may run without any ssh user connection.
 
-    cd ~/PIVXRedditTipBot-master
+    cd ~/PRTB-master
     pm2 start index.js --name PRTB
     
 To stop the bot type
